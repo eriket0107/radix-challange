@@ -15,7 +15,7 @@ export const inputCsv = async (
     mimetype: z.string().regex(/^text\/(csv)$/),
   })
 
-  const fileBody = registerBodySchema.parse(file[0])
+  const { fieldname, filename, mimetype } = registerBodySchema.parse(file[0])
   const fileHandler = new FileHandler()
 
   let csvFile
