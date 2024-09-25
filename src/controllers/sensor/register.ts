@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -21,15 +20,11 @@ export const register = async (
 
   const registerSensorDataUserCase = makeRegisterSensorData()
 
-  const parseTimestampIntoDate = dayjs(timestamp).format(
-    'YYYY-MM-DDTHH:mm:ssZ[Z]',
-  )
-
   try {
     await registerSensorDataUserCase.execute({
       equipmentId,
       value,
-      timestamp: parseTimestampIntoDate,
+      timestamp,
     })
 
     return reply.status(201).send({ message: 'ok' })
