@@ -9,21 +9,26 @@ export const inputCsv = async (
   reply: FastifyReply,
 ) => {
   const file = await request.saveRequestFiles()
-  console.log(file[0])
   const registerBodySchema = z.object({
     fieldname: z.string(),
     filename: z.string(),
     mimetype: z.string().regex(/^text\/(csv)$/),
   })
 
-  const { fieldname, filename, mimetype } = registerBodySchema.parse(file[0])
-  console.log({ fieldname, filename, mimetype })
+  const fileBody = registerBodySchema.parse(file[0])
   const fileHandler = new FileHandler()
 
+  let csvFile
   try {
-    await fileHandler.saveFile({ file: file[0] })
+    csvFile = await fileHandler.saveFile({ file: file[0] })
 
-    return reply.status(201).send({ fieldname, filename, mimetype })
+    return reply.status(201).send({
+      fieldname,
+      filename,
+      path: csvFile?.csvPath,
+      mimetype,
+      id: csvFile?.csvId,
+    })
   } catch (error) {
     errorHandler({ error, reply, code: 400 })
   }
