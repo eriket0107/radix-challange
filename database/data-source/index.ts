@@ -3,7 +3,12 @@ import path from 'node:path'
 import sqlite3 from 'sqlite3'
 import { DataSource } from 'typeorm'
 
-const databasePath = path.resolve('database', 'radix.sqlite')
+import { env } from '@/env'
+
+const databasePath =
+  env.NODE_ENV === 'prod'
+    ? env.DATABASE_URL
+    : path.resolve('database', 'radix.sqlite')
 const entitiesPath = path.resolve('database', 'entities', '*.ts')
 const migrationsPath = path.resolve('database', 'migrations', '*.ts')
 
