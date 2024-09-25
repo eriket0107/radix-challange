@@ -1,7 +1,19 @@
-export class InputCsvUseCase {
-  constructor() {}
+import { CsvRepository } from '@/repositories/csv-repository'
 
-  async execute() {
-    console.log('InputCsvUseCase')
+type CsvDataRequest = {
+  path: string
+  id: string
+  name: string
+}
+
+export class InputCsvUseCase {
+  constructor(private csvRepository: CsvRepository) {}
+
+  async execute(csvDataRequest: CsvDataRequest) {
+    const csvFile = await this.csvRepository.saveFile(csvDataRequest)
+
+    return {
+      csvFile,
+    }
   }
 }

@@ -34,6 +34,7 @@ export class FileHandler {
         csvPath,
         csvId,
         type: 'csv',
+        uniqueName,
         fileSizeInMB: (await fs.stat(csvPath)).size / 1024 / 1024,
       }
     } catch (error) {

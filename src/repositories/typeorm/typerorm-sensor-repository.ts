@@ -5,6 +5,8 @@ import { Repository } from 'typeorm'
 import { SensorRepository } from '../sensor-repository'
 
 export class TyperOrmSensorRepository implements SensorRepository {
+  private repository: Repository<Sensor> = dataSource.getRepository(Sensor)
+
   async findByEquipmentId(equipmentId: string): Promise<Sensor | null> {
     const sensor = await this.repository.findOne({
       where: { equipmentId },
@@ -27,7 +29,6 @@ export class TyperOrmSensorRepository implements SensorRepository {
     return sensor
   }
 
-  private repository: Repository<Sensor> = dataSource.getRepository(Sensor)
   async register(sensorData: Sensor): Promise<Sensor> {
     const sensor = await this.repository.save(sensorData)
 
