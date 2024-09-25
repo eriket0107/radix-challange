@@ -1,6 +1,6 @@
 name: Run Unit Tests
 
-on: [push]
+on: [push, pull_request, check_run ]
 
 jobs:
   run-unit-tests: 
@@ -19,3 +19,4 @@ jobs:
       - run: npm ci
 
       - run: npm run test
+      
