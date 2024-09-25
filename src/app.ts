@@ -6,6 +6,7 @@ import multipart from '@fastify/multipart'
 import fastify from 'fastify'
 import { ZodError } from 'zod'
 
+import { sensorRoutes } from './controllers/sensor/routes'
 import { env } from './env'
 
 export const app = fastify()
@@ -24,6 +25,8 @@ app.register(multipart, {
   },
   attachFieldsToBody: true,
 })
+
+app.register(sensorRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
