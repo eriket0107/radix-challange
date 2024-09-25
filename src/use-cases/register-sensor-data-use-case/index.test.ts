@@ -16,7 +16,7 @@ describe('Register Sensor data Use Case', async () => {
   })
 
   it('should be able to create a new Sensor Data', async () => {
-    const { sensorData } = await sut.execute(sensorDataMock(1))
+    const { sensorData } = await sut.execute(sensorDataMock())
 
     console.log(sensorData)
     expect(sensorData).toEqual(expect.any(Object))
@@ -26,7 +26,7 @@ describe('Register Sensor data Use Case', async () => {
   })
 
   it('should not be able to create a new Sensor Data if it already exists', async () => {
-    const mockedValue = sensorDataMock(1)
+    const mockedValue = sensorDataMock()
     await sut.execute(mockedValue)
 
     expect(async () => await sut.execute(mockedValue)).rejects.toBeInstanceOf(
