@@ -17,6 +17,9 @@ export class Csv {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt?: Date
 
+  @Column({ type: 'varchar', name: 'fileName', nullable: true })
+  fileName!: string
+
   @Column({ type: 'varchar', name: 'path' })
   path!: string
 }

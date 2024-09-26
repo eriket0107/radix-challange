@@ -28,6 +28,7 @@ export const inputCsv = async (
       id: csvFile?.csvId as string,
       name: csvFile?.uniqueName as string,
       path: csvFile?.csvPath as string,
+      fileName: csvFile?.uniqueName as string,
     })
 
     return reply.status(201).send({
