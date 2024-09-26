@@ -8,10 +8,10 @@ import { TyperOrmSensorRepository } from '@/repositories/typeorm/typerorm-sensor
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-console.log('Starting seeding sensors...')
 export const seedSensors = async () => {
-  console.log('Creating repository to seed...')
+  console.log('Starting seeding sensors...')
 
+  console.log('Creating repository to seed...')
   const sensorRepository = new TyperOrmSensorRepository()
 
   for (let i = 1; i <= 50; i++) {
@@ -24,6 +24,5 @@ export const seedSensors = async () => {
 
     await sensorRepository.register(sensor)
   }
+  console.log('Finished seeding sensors...')
 }
-
-console.log('Finished seeding sensors...')

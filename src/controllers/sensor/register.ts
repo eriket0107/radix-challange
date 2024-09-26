@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-import { makeRegisterSensorData } from '@/factories/make-sensor-data-factory'
+import { makeRegisterSensorData } from '@/factories/make-sensor-data'
 import { errorHandler } from '@/utils/error-handler'
 
 export const register = async (
