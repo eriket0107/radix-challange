@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-import { makeInputCsv } from '@/factories/make-csv-input-factory'
+import { makeInputCsv } from '@/factories/make-csv-input'
 import { FileHandler } from '@/utils/csv-handler'
 import { errorHandler } from '@/utils/error-handler'
 
