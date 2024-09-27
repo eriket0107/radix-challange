@@ -19,4 +19,11 @@ export interface SensorRepository {
     sensorData: Sensor
     sensorDataToSave: Sensor
   }): Promise<Sensor>
+  period({
+    startDate,
+    endDate,
+  }: {
+    startDate: string
+    endDate: string
+  }): Promise<Sensor[]>
 }
