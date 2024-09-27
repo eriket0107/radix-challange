@@ -1,5 +1,5 @@
 import { TypeOrmCsvRepository } from '@/repositories/typeorm/typeorm-csv-repository'
-import { InputCsvUseCase } from '@/use-cases/input-csv-use-case'
+import { InputCsvUseCase } from '@/use-cases/csv/input-csv-use-case'
 
 export const makeInputCsv = () => {
   const csvRepository = new TypeOrmCsvRepository()

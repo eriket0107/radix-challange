@@ -3,8 +3,9 @@ import 'reflect-metadata'
 import { dataSource } from 'database/data-source'
 
 import { app } from '@/app'
+import { env } from '@/env'
 
-const port = 3333
+const port = env.PORT
 
 dataSource
   .initialize()
