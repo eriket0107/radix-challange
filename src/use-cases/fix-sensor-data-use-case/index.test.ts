@@ -20,7 +20,7 @@ describe('Shoulbd be able to fix Sensor data Use Case', async () => {
     const dataToFix = { ...sensorDataEmptyMock() }
     sensorRepository.register(dataToFix)
     const { fixedSensorData } = await sut.execute({
-      filePath: 'src/use-cases/fix-sensor-data-use-case/test.csv',
+      filePath: 'src/uploads/tests/test.csv',
     })
 
     expect(fixedSensorData).toEqual(expect.any(Object))
@@ -40,7 +40,7 @@ describe('Shoulbd be able to fix Sensor data Use Case', async () => {
     expect(
       async () =>
         await sut.execute({
-          filePath: 'src/use-cases/fix-sensor-data-use-case/test-empty.csv',
+          filePath: 'src/uploads/tests/test-empty.csv',
         }),
     ).rejects.toBeInstanceOf(CSVReadFileError)
   })
