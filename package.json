@@ -13,7 +13,8 @@
     "migration:run": "npm run typeorm migration:run",
     "seed": "tsx database/seed/*.ts",
     "test": "vitest run --dir src/use-cases",
-    "test:watch": "vitest --dir src/use-cases"
+    "test:watch": "vitest --dir src/use-cases",
+    "prepare": "husky"
   },
   "author": "eriket0107",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "@types/supertest": "6.0.2",
     "eslint": "8.57.0",
     "eslint-plugin-simple-import-sort": "12.0.0",
+    "husky": "9.1.6",
     "ts-node": "10.9.2",
     "tsup": "8.0.2",
     "tsx": "4.7.2",
