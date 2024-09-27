@@ -22,7 +22,7 @@ export class FixSensorDataUseCase {
 
     const csvFile = (await filedHandler.parseFile({
       path: filePath,
-    })) as Array<Sensor>
+    })) as Sensor[]
 
     if (!csvFile.length || !csvFile) throw new CSVReadFileError()
 
