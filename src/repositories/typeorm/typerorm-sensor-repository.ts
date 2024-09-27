@@ -40,4 +40,23 @@ export class TyperOrmSensorRepository implements SensorRepository {
 
     return sensorData
   }
+
+  async update({
+    sensorData,
+    sensorDataToSave,
+  }: {
+    sensorData: Sensor
+    sensorDataToSave: Sensor
+  }): Promise<Sensor> {
+    const dataToUpdate = await this.repository.findOne({
+      where: { equipmentId: sensorData.equipmentId },
+    })
+
+    if (!dataToUpdate) throw new Error('Error when updating data')
+
+    console.log('antes', dataToUpdate)
+    Object.assign(dataToUpdate, sensorDataToSave)
+    console.log('depois', dataToUpdate)
+    return this.repository.save(dataToUpdate)
+  }
 }

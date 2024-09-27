@@ -1,8 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-import { TyperOrmSensorRepository } from '@/repositories/typeorm/typerorm-sensor-repository'
-import { FixSensorDataUseCase } from '@/use-cases/fix-sensor-data-use-case'
+import { makeFixSensorData } from '@/factories/make-fix-sensor-data'
 import { errorHandler } from '@/utils/error-handler'
 
 export const fixSensorData = async (
@@ -14,9 +13,8 @@ export const fixSensorData = async (
   })
 
   const { filePath } = fixSensorDataBodySchema.parse(request.query)
-  console.log(filePath)
-  const sensorRepository = new TyperOrmSensorRepository()
-  const fixSensorDataUserCase = new FixSensorDataUseCase(sensorRepository)
+
+  const fixSensorDataUserCase = makeFixSensorData()
 
   try {
     const sensorsToUpdate = await fixSensorDataUserCase.execute({ filePath })

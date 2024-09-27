@@ -10,7 +10,7 @@ export const register = async (
 ) => {
   const registerBodySchema = z.object({
     equipmentId: z.string(),
-    value: z.number(),
+    value: z.number().default(0),
     timestamp: z.string(),
   })
   const { equipmentId, value, timestamp } = registerBodySchema.parse(

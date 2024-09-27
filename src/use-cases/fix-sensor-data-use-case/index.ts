@@ -1,6 +1,12 @@
+import { Sensor } from 'database/entities/Sensor'
+
 import { SensorRepository } from '@/repositories/sensor-repository'
 import { FileHandler } from '@/utils/csv-handler'
 
+import { FixDataError } from '../errors/fix-data-error'
+
+let sensorDataToSave: Sensor
+let fixedSensorData: Sensor
 export class FixSensorDataUseCase {
   constructor(private sensorRepository: SensorRepository) {}
 
@@ -11,21 +17,25 @@ export class FixSensorDataUseCase {
     )
     const filedHandler = new FileHandler()
 
-    console.log(await filedHandler.parseFile({ path: filePath }))
+    const csvFile = (await filedHandler.parseFile({
+      path: filePath,
+    })) as Array<Sensor>
 
-    // const sensorsToUpdate = Object.entries(allSensorData).reduce(
-    //   (acc: { [key: string]: any }, [id, sensor]) => {
-    //     const hasEmptyFields = Object.values(sensor).some(
-    //       (val) => val == null || val === '',
-    //     )
-    //     if (hasEmptyFields) {
-    //       acc[id] = sensor
-    //     }
-    //     return acc
-    //   },
-    //   {},
-    // )
+    for (const sensorToUpdate of sensorsToUpdate) {
+      for (const csv of csvFile) {
+        if (csv.equipmentId === sensorToUpdate.equipmentId) {
+          sensorDataToSave = csv
+        }
+      }
 
-    return sensorsToUpdate
+      if (!sensorDataToSave || !sensorsToUpdate) throw new FixDataError()
+
+      fixedSensorData = await this.sensorRepository.update({
+        sensorData: sensorToUpdate,
+        sensorDataToSave,
+      })
+    }
+
+    return { fixedSensorData }
   }
 }
