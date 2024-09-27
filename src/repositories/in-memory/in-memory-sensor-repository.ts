@@ -42,4 +42,9 @@ export class InMemorySensorRepository implements SensorRepository {
 
     return sensor
   }
+
+  async listAll(): Promise<Sensor[]> {
+    const allData = this.dataBase
+    return allData
+  }
 }
