@@ -17,4 +17,10 @@ export class TypeOrmCsvRepository implements CsvRepository {
 
     return data
   }
+
+  async getById(id: string): Promise<Csv | null> {
+    const data = await this.repository.findOneBy({ id })
+
+    return data
+  }
 }

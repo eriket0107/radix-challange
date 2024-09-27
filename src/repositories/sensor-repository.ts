@@ -10,6 +10,7 @@ export interface SensorRepository {
     equipmentId: string
     timestamp: string
   }): Promise<Sensor | null>
+  findEmptyRegisters(): Promise<Sensor[]>
   listAll(): Promise<Sensor[]>
   update({
     sensorData,

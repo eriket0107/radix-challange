@@ -65,4 +65,12 @@ export class InMemorySensorRepository implements SensorRepository {
 
     return dataToUpdate
   }
+
+  async findEmptyRegisters(): Promise<Sensor[]> {
+    const emptyRegisters = this.dataBase.filter(
+      (sensor) => sensor.timestamp === '' && sensor.value === 0,
+    )
+
+    return emptyRegisters
+  }
 }
