@@ -42,4 +42,27 @@ export class InMemorySensorRepository implements SensorRepository {
 
     return sensor
   }
+
+  async listAll(): Promise<Sensor[]> {
+    const allData = this.dataBase
+    return allData
+  }
+
+  async update({
+    sensorData,
+    sensorDataToSave,
+  }: {
+    sensorData: Sensor
+    sensorDataToSave: Sensor
+  }): Promise<Sensor> {
+    const dataToUpdate = this.dataBase.find(
+      (sensor) => sensor.equipmentId === sensorData.equipmentId,
+    )
+
+    if (!dataToUpdate) throw new Error('Error when updating data')
+
+    Object.assign(dataToUpdate, sensorDataToSave)
+
+    return dataToUpdate
+  }
 }

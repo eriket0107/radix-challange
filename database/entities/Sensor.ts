@@ -11,7 +11,7 @@ export class Sensor {
   @PrimaryGeneratedColumn('uuid')
   id?: string
 
-  @CreateDateColumn({ type: 'date', name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at' })
   createdAt?: Date
 
   @UpdateDateColumn({ name: 'updated_at' })
@@ -20,9 +20,9 @@ export class Sensor {
   @Column({ type: 'varchar', name: 'equipment_id' })
   equipmentId!: string
 
-  @CreateDateColumn({ type: 'date', name: 'timestamp' })
-  timestamp!: string
+  @CreateDateColumn({ type: 'date', name: 'timestamp', nullable: true })
+  timestamp?: string
 
-  @Column({ type: 'float' })
-  value!: number
+  @Column({ type: 'float', nullable: true })
+  value?: number
 }

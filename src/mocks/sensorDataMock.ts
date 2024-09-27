@@ -5,3 +5,9 @@ export const sensorDataMock = (i: number = 1) => ({
   value: Number((Math.random() * 100).toFixed(2)), // Random value between 0 and 100
   timestamp: dayjs().subtract(i, 'days').format('YYYY-MM-DDTHH:mm:ssZ[Z]'),
 })
+
+export const sensorDataEmptyMock = () => ({
+  equipmentId: `EQ-16523`,
+  value: 0,
+  timestamp: '',
+})
