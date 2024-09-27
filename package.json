@@ -13,7 +13,8 @@
     "migration:run": "npm run typeorm migration:run",
     "seed": "tsx database/seed/*.ts",
     "test": "vitest run --dir src/use-cases",
-    "test:watch": "vitest --dir src/use-cases"
+    "test:watch": "vitest --dir src/use-cases",
+    "prepare": "husky"
   },
   "author": "eriket0107",
   "license": "ISC",
