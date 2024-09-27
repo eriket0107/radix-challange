@@ -2,8 +2,8 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { sensorDataMock } from '@/mocks/sensorDataMock'
 import { InMemorySensorRepository } from '@/repositories/in-memory/in-memory-sensor-repository'
+import { SensorDataAlreadyExistsError } from '@/use-cases/errors/sesor-register-already-exists'
 
-import { SensorDataAlreadyExistsError } from '../errors/sesor-register-already-exists'
 import { RegisterSensorDataUseCase } from '.'
 
 let sensorRepository: InMemorySensorRepository

@@ -1,11 +1,10 @@
 import { Sensor } from 'database/entities/Sensor'
 
 import { SensorRepository } from '@/repositories/sensor-repository'
+import { CSVReadFileError } from '@/use-cases/errors/csv-read-file-error'
+import { EmptyFilePathError } from '@/use-cases/errors/empty-file-path-error'
+import { FixDataError } from '@/use-cases/errors/fix-data-error'
 import { FileHandler } from '@/utils/csv-handler'
-
-import { CSVReadFileError } from '../errors/csv-read-file-error'
-import { EmptyFilePathError } from '../errors/empty-file-path-error'
-import { FixDataError } from '../errors/fix-data-error'
 
 let sensorDataToSave: Sensor
 let fixedSensorData: Sensor

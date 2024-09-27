@@ -1,5 +1,5 @@
 import { TyperOrmSensorRepository } from '@/repositories/typeorm/typerorm-sensor-repository'
-import { RegisterSensorDataUseCase } from '@/use-cases/register-sensor-data-use-case'
+import { RegisterSensorDataUseCase } from '@/use-cases/sensor/register-sensor-data-use-case'
 
 export const makeRegisterSensorData = () => {
   const sensorRepository = new TyperOrmSensorRepository()

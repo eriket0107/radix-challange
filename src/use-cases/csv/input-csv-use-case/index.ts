@@ -1,6 +1,5 @@
 import { CsvRepository } from '@/repositories/csv-repository'
-
-import { InputCsvError } from '../errors/input-csv-error'
+import { InputCsvError } from '@/use-cases/errors/input-csv-error'
 
 type CsvDataRequest = {
   path: string

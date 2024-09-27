@@ -2,9 +2,9 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { sensorDataEmptyMock } from '@/mocks/sensorDataMock'
 import { InMemorySensorRepository } from '@/repositories/in-memory/in-memory-sensor-repository'
+import { CSVReadFileError } from '@/use-cases/errors/csv-read-file-error'
+import { EmptyFilePathError } from '@/use-cases/errors/empty-file-path-error'
 
-import { CSVReadFileError } from '../errors/csv-read-file-error'
-import { EmptyFilePathError } from '../errors/empty-file-path-error'
 import { FixSensorDataUseCase } from '.'
 
 let sensorRepository: InMemorySensorRepository

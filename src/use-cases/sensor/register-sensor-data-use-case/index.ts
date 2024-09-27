@@ -1,9 +1,8 @@
 import { Sensor } from 'database/entities/Sensor'
 
 import { SensorRepository } from '@/repositories/sensor-repository'
-
-import { SensorRegisterError } from '../errors/sensor-register-error'
-import { SensorDataAlreadyExistsError } from '../errors/sesor-register-already-exists'
+import { SensorRegisterError } from '@/use-cases/errors/sensor-register-error'
+import { SensorDataAlreadyExistsError } from '@/use-cases/errors/sesor-register-already-exists'
 
 type SensorDataRequest = {
   equipmentId: string

@@ -2,3 +2,4 @@ node_modules
 .env
 database/*.sqlite
 src/uploads/*.csv
+.DS_Store
