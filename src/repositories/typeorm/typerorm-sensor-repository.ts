@@ -59,4 +59,17 @@ export class TyperOrmSensorRepository implements SensorRepository {
     console.log('depois', dataToUpdate)
     return this.repository.save(dataToUpdate)
   }
+
+  async findEmptyRegisters(): Promise<Sensor[]> {
+    const sensorsToUpdate = await this.repository
+      .createQueryBuilder('sensor')
+      .where({
+        timestamp: '',
+      })
+      .orWhere({ value: 0 })
+      .orWhere({ equipmentId: '' })
+      .getMany()
+
+    return sensorsToUpdate
+  }
 }

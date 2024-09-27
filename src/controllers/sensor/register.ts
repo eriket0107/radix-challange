@@ -11,7 +11,7 @@ export const register = async (
   const registerBodySchema = z.object({
     equipmentId: z.string(),
     value: z.number().default(0),
-    timestamp: z.string(),
+    timestamp: z.string().default(''),
   })
   const { equipmentId, value, timestamp } = registerBodySchema.parse(
     request.body,

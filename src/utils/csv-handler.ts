@@ -17,11 +17,11 @@ type File = SavedMultipartFile
 
 export class FileHandler {
   async saveFile({ file }: { file: File }) {
-    const fileId = randomUUID()
-    const uniqueName =
-      `${dayjs().format('YYYY-MM-DDTHH:mm:ssZ[Z]')}_${fileId}`.split('.')[0]
+    const uniqueName = `${dayjs().format('YYYY-MM-DDTHH:mm:ssZ[Z]')}`.split(
+      '.',
+    )[0]
 
-    const csvId = uniqueName.includes(fileId) && uniqueName.split('_')[1]
+    const csvId = randomUUID()
 
     const csvPath = path.join('src/uploads', `${uniqueName}.csv`)
 
@@ -32,7 +32,9 @@ export class FileHandler {
 
     try {
       await fs.writeFile(file.filepath, csvPath)
-      console.log(`File moved and resized successfully to ${csvPath}`)
+
+      console.log(`File moved successfully to ${csvPath}`)
+
       return {
         csvPath,
         csvId,

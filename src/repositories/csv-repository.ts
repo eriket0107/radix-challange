@@ -9,4 +9,5 @@ export type CsvData = {
 export interface CsvRepository {
   saveFile(csvFile: CsvData): Promise<Csv>
   listFiles(): Promise<Csv[]>
+  getById(id: string): Promise<Csv | null>
 }
