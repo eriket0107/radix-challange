@@ -34,4 +34,10 @@ export class TyperOrmSensorRepository implements SensorRepository {
 
     return sensor
   }
+
+  async listAll(): Promise<Sensor[]> {
+    const sensorData = await this.repository.find()
+
+    return sensorData
+  }
 }

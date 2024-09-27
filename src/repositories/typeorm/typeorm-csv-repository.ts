@@ -12,7 +12,7 @@ export class TypeOrmCsvRepository implements CsvRepository {
     return data
   }
 
-  listFiles(): Promise<Csv[]> {
+  async listFiles(): Promise<Csv[]> {
     const data = this.repository.find()
 
     return data

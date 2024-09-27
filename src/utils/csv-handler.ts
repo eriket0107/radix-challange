@@ -1,8 +1,11 @@
 import { randomUUID } from 'node:crypto'
+import fsStream from 'node:fs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { SavedMultipartFile } from '@fastify/multipart'
+import { parse as csvParse } from 'csv-parse'
+import { Sensor } from 'database/entities/Sensor'
 import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import utc from 'dayjs/plugin/utc'
@@ -50,5 +53,29 @@ export class FileHandler {
       console.error('Error reading file:', error)
       throw error
     }
+  }
+
+  async parseFile({ path }: { path: string }) {
+    const csvRows: Sensor[] = []
+
+    return new Promise((resolve, reject) =>
+      fsStream
+        .createReadStream(path)
+        .pipe(
+          csvParse({
+            columns: true,
+            skip_empty_lines: true,
+          }),
+        )
+        .on('data', (data: any) => {
+          csvRows.push(data)
+        })
+        .on('end', () => {
+          resolve(csvRows)
+        })
+        .on('error', (error: Error) => {
+          reject(error)
+        }),
+    )
   }
 }

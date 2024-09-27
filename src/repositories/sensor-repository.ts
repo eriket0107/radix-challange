@@ -10,4 +10,5 @@ export interface SensorRepository {
     equipmentId: string
     timestamp: string
   }): Promise<Sensor | null>
+  listAll(): Promise<Sensor[]>
 }
