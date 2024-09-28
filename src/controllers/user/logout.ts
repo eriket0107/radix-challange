@@ -8,7 +8,7 @@ export const logout = async (request: FastifyRequest, reply: FastifyReply) => {
     reply.clearCookie('refreshToken')
 
     return reply
-      .status(200)
+      .status(204)
       .send({ message: 'Logged out successfully.' })
       .redirect('/')
   } catch (error) {

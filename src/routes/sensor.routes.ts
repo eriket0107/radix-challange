@@ -14,6 +14,6 @@ export const sensorRoutes = async (app: FastifyInstance) => {
     { onRequest: [verifyJwt, verifyUserRole(['ADMIN'])] },
     seedSensorData,
   )
-  app.get('/fix-sensor-data', { onRequest: [verifyJwt] }, fixSensorData)
+  app.put('/fix-sensor-data', { onRequest: [verifyJwt] }, fixSensorData)
   app.get('/mean-by-period', { onRequest: [verifyJwt] }, meanByPeriod)
 }
