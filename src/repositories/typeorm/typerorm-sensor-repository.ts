@@ -72,4 +72,21 @@ export class TyperOrmSensorRepository implements SensorRepository {
 
     return sensorsToUpdate
   }
+
+  async period({
+    startDate,
+    endDate,
+  }: {
+    startDate: string
+    endDate: string
+  }): Promise<Sensor[]> {
+    const period = await this.repository
+      .createQueryBuilder('sensor')
+      .where('timestamp <= :startDate', { startDate })
+      .andWhere('timestamp >= :endDate', { endDate })
+      .orderBy('timestamp', 'DESC')
+      .getMany()
+
+    return period
+  }
 }

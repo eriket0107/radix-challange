@@ -73,4 +73,24 @@ export class InMemorySensorRepository implements SensorRepository {
 
     return emptyRegisters
   }
+
+  async period({
+    startDate,
+    endDate,
+  }: {
+    startDate: string
+    endDate: string
+  }): Promise<Sensor[]> {
+    const periodMean = this.dataBase.filter((sensor: Sensor) => {
+      const sensorDateTimeStampe = sensor.timestamp?.split('T')[0]
+      const timestamp = dayjs(sensorDateTimeStampe).format('YYYY-MM-DD')
+      const sensorDate =
+        dayjs(timestamp).isAfter(endDate) &&
+        dayjs(timestamp).isBefore(startDate)
+
+      return sensorDate
+    })
+
+    return periodMean
+  }
 }
