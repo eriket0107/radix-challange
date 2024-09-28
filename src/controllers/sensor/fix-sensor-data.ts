@@ -12,7 +12,7 @@ export const fixSensorData = async (
     filePath: z.string(),
   })
 
-  const { filePath } = fixSensorDataBodySchema.parse(request.query)
+  const { filePath } = fixSensorDataBodySchema.parse(request.body)
 
   const fixSensorDataUserCase = makeFixSensorData()
 
