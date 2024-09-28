@@ -6,14 +6,15 @@ import multipart from '@fastify/multipart'
 import fastify from 'fastify'
 import { ZodError } from 'zod'
 
-import { csvRoutes } from './controllers/csv/routes'
-import { sensorRoutes } from './controllers/sensor/routes'
 import { env } from './env'
+import { routes } from './routes'
 
 export const app = fastify()
 
 app.register(cors)
 app.register(cookies)
+
+routes()
 
 app.register(multipart, {
   limits: {
@@ -26,9 +27,6 @@ app.register(multipart, {
   },
   attachFieldsToBody: true,
 })
-
-app.register(sensorRoutes)
-app.register(csvRoutes)
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
