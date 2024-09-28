@@ -8,7 +8,7 @@ import { GetMeanByPeriodUseCase } from '.'
 let sensorRepository: InMemorySensorRepository
 let sut: GetMeanByPeriodUseCase
 
-describe('Register Sensor data Use Case', async () => {
+describe('Get Mean By Period Use Case', async () => {
   beforeEach(async () => {
     sensorRepository = new InMemorySensorRepository()
     sut = new GetMeanByPeriodUseCase(sensorRepository)
