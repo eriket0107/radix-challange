@@ -24,7 +24,7 @@ This API handles user registration, authentication, session management, and toke
   }
   ```
   
-## 2. **Sensor Registration Data**
+## 2. **Fix Sensor Registration Data**
 
 ### `PUT /fix-sensor-data`
 
@@ -38,7 +38,7 @@ This API handles user registration, authentication, session management, and toke
   }
   ```
 
-## 3. **Sensor Registration Data**
+## 3. **Get Mean By Periods**
 
 ### `GET /mean-by-period`
 
@@ -69,7 +69,15 @@ This API handles user registration, authentication, session management, and toke
   }
   ```
 
-## -USER
+## 4. **Seed Sensor**
+
+### `POST /seed-sensor-data`
+
+**Description**: This endpoint Seed Data for tests.
+
+- **Must Be Autheticated With ADMIN role**
+
+## USER
 
 ## 1. **User Registration**
 
@@ -126,7 +134,7 @@ This API handles user registration, authentication, session management, and toke
   {}
   ```
 
-## -CSV
+## CSV
 
 ### 1. **User Refresh token**
 
@@ -137,10 +145,12 @@ This API handles user registration, authentication, session management, and toke
 - **Request Body**:
 
   ```json
-  {}
+    CSV FILE THAT WILL BE SAVED
+
+    MUST HAVE A TYPE CSV
   ```
 
-### 2. **User Refresh token**
+### 2. **List all CSV files**
 
 #### `GET /list-csv`
 
@@ -149,15 +159,26 @@ This API handles user registration, authentication, session management, and toke
 - **Request Body**:
 
   ```json
-  {}
+    {
+      "csvFiles": []
+    }
+  ```
 
-### 3. **User Refresh token**
+### 3. **View CSV Data**
 
 #### `GET /view-csv-data/:filePath`
 
 **Description**: This endpoint show data from a current CSV file using the path.
 
-- **Request Body**:
+- **Respons Body Example**:
 
   ```json
-  {}  ```
+    [
+      {
+          "equipmentId": "EQ-16526",
+          "value": "49.15",
+          "timestamp": "2024-08-17T07:38:20-03:00Z"
+      }
+
+  ]
+  ```
