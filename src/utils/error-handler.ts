@@ -5,11 +5,13 @@ export const errorHandler = ({
   reply,
   code = 400,
   message,
+  redirectTo,
 }: {
   error: unknown
   reply: FastifyReply
   code?: number
   message?: string
+  redirectTo?: string
 }) => {
   let errorMessage
 
@@ -19,7 +21,10 @@ export const errorHandler = ({
       error: errorMessage,
     })
 
-    reply.status(code).send({ error: errorMessage })
+    if (redirectTo)
+      reply.status(code).send({ error: errorMessage }).redirect(redirectTo)
+    else reply.status(code).send({ error: errorMessage })
+
     throw error
   } else {
     console.error('Add some tool to track errors')

@@ -2,6 +2,7 @@ import 'reflect-metadata'
 
 import cookies from '@fastify/cookie'
 import cors from '@fastify/cors'
+import fastifyJwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
 import fastify from 'fastify'
 import { ZodError } from 'zod'
@@ -13,6 +14,16 @@ export const app = fastify()
 
 app.register(cors)
 app.register(cookies)
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  sign: {
+    expiresIn: '10m',
+  },
+  cookie: {
+    cookieName: 'refreshToken',
+    signed: false,
+  },
+})
 
 routes()
 
@@ -35,7 +46,7 @@ app.setErrorHandler((error, _, reply) => {
       issues: error.format(),
     })
   }
-  console.log(error)
+
   if (env.NODE_ENV !== 'prod') {
     console.error(error)
   }
