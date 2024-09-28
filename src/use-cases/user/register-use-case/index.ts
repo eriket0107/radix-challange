@@ -1,6 +1,8 @@
 import { User } from 'database/entities/User'
 
 import { UserRepository } from '@/repositories/user-repository'
+import { StrongPasswordError } from '@/use-cases/errors/strong-password-error'
+import { UserEmailAlreadyExistsError } from '@/use-cases/errors/user-email-already-exists-error'
 import { PasswordHandler } from '@/utils/password-handler'
 
 type RegisterUseCaseRequest = {
@@ -22,8 +24,16 @@ export class RegisterUserUseCase {
     email,
     password,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
+    const emailAlreadyExists = await this.userRepository.findByEmail(email)
+    const hasStrogPassword =
+      await this.passwordHandler.verifiesStrongPassword(password)
+
+    if (emailAlreadyExists) throw new UserEmailAlreadyExistsError()
+
+    if (!hasStrogPassword) throw new StrongPasswordError()
+
     const password_hash = await this.passwordHandler.hashPassword(password, 6)
-    console.log(name, email, password)
+
     const user = await this.userRepository.register(name, email, password_hash)
     return user
   }

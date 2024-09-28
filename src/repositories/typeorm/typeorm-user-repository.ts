@@ -18,10 +18,18 @@ export class TypeOrmUserRepository implements UserRepository {
   }
 
   findByEmail(email: string): Promise<User | null> {
-    throw new Error('Method not implemented.')
+    const user = this.repository.findOneBy({
+      email,
+    })
+
+    return user
   }
 
   findById(id: string): Promise<User | null> {
-    throw new Error('Method not implemented.')
+    const user = this.repository.findOneBy({
+      id,
+    })
+
+    return user
   }
 }
