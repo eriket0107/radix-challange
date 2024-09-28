@@ -1,5 +1,9 @@
 # API Documentation
 
+## Postman Workspace with Collections Requests
+
+<https://elements.getpostman.com/redirect?entityId=32764332-7b4615d7-7ac6-4bbc-9a08-03edb7ccbdb8&entityType=collection>
+
 ## Overview
 
 This API serves as a comprehensive solution for collecting, storing, and analyzing sensor data from industrial equipment, enabling real-time monitoring and insights for the oil and gas operations.
