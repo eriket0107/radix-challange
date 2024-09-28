@@ -2,7 +2,20 @@
 
 ## Overview
 
-This API handles user registration, authentication, session management, and token refreshing. Below are the available routes and their descriptions.
+This API serves as a comprehensive solution for collecting, storing, and analyzing sensor data from industrial equipment, enabling real-time monitoring and insights for the oil and gas operations.
+
+- Receiving real-time sensor data in JSON format
+- Processing CSV files to recover missing data
+- Storing data in a database
+- Providing a web interface for data visualization
+- Offering graph-based analytics for sensor readings
+
+Key aspects:
+
+- Handles both real-time and recovered data
+- Supports flexible time ranges for data retrieval
+- Includes interactive graphs for data analysis
+- Designed for continuous monitoring and insights in oil/gas operations
 
 ## Endpoints
 
