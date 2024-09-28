@@ -1,9 +1,9 @@
 import { FastifyInstance } from 'fastify'
 
-import { fixSensorData } from './fix-sensor-data'
-import { meanByPeriod } from './mean-by-period'
-import { register } from './register'
-import { seedSensorData } from './seed-sensor-data'
+import { fixSensorData } from '@/controllers/sensor/fix-sensor-data'
+import { meanByPeriod } from '@/controllers/sensor/mean-by-period'
+import { register } from '@/controllers/sensor/register'
+import { seedSensorData } from '@/controllers/sensor/seed-sensor-data'
 
 export const sensorRoutes = async (app: FastifyInstance) => {
   app.post('/register', register)
