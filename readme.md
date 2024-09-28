@@ -19,7 +19,7 @@ Key aspects:
 
 ## Endpoints
 
-## -SENSOR
+## SENSOR
 
 ## 1. **Sensor Registration Data**
 
