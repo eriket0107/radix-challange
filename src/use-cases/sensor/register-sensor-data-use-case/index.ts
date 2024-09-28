@@ -1,6 +1,7 @@
 import { Sensor } from 'database/entities/Sensor'
 
 import { SensorRepository } from '@/repositories/sensor-repository'
+import { EmptyFieldError } from '@/use-cases/errors/empy-field-error'
 import { SensorRegisterError } from '@/use-cases/errors/sensor-register-error'
 import { SensorDataAlreadyExistsError } from '@/use-cases/errors/sesor-register-already-exists'
 
@@ -30,6 +31,10 @@ export class RegisterSensorDataUseCase {
 
     if (verifiesIfExistsSensorDataRegister) {
       throw new SensorDataAlreadyExistsError()
+    }
+
+    if (!equipmentId || !timestamp || !value) {
+      throw new EmptyFieldError()
     }
 
     const sensorData = await this.sensorRepository.register({

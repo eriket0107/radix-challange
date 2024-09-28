@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 
 import { SensorRepository } from '@/repositories/sensor-repository'
+import { EmptyFieldError } from '@/use-cases/errors/empy-field-error'
 import { getMeanValue } from '@/utils/getMeanValue'
 
 enum DaysBehindCurrentDate {
@@ -38,6 +39,13 @@ export class GetMeanByPeriodUseCase {
         startDate: periodsToCompare.today,
         endDate: periodsToCompare[day],
       })
+
+      if (
+        periodMean.some(
+          (sensor) => sensor.value === undefined || !sensor.timestamp?.length,
+        )
+      )
+        throw new EmptyFieldError()
       const meanValue = getMeanValue(periodMean)
 
       meanByPeriod.push({
