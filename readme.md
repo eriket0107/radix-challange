@@ -6,7 +6,7 @@
 <a href="https://github.com/eriket0107/radix-front">Front end</a>
 
 ## User creation 
-- The password must have lenght of 8 and special characters like (!, @, #) 
+- The password must have length of 8 and special characters like (!, @, #) 
 
 ## Running the API
 
