@@ -1,5 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
+import { errorHandler } from '@/utils/error-handler'
+
 export const verifyJwt = async (
   request: FastifyRequest,
   reply: FastifyReply,
@@ -7,6 +9,6 @@ export const verifyJwt = async (
   try {
     await request.jwtVerify()
   } catch (err) {
-    return reply.status(401).send({ message: 'Unauthorized ' })
+    return errorHandler({ error: err, reply, code: 401, redirectTo: '/' })
   }
 }
