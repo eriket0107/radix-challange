@@ -18,6 +18,6 @@ export const viewCsvData = async (
     const csvData = await csvHandler.parseFile({ path: filePath })
     return reply.status(200).send(csvData)
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({ error, reply, code: 400, file: 'controller: view csv data' })
   }
 }

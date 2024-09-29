@@ -18,14 +18,7 @@ export const authentication = async (
 
     const { user } = await authenticateUseCase.execute({ email, password })
 
-    const token = await reply.jwtSign(
-      { sub: user.id, role: user.role },
-      {
-        sign: {
-          expiresIn: '10m',
-        },
-      },
-    )
+    const token = await reply.jwtSign({ sub: user.id, role: user.role }, {})
 
     const refreshToken = await reply.jwtSign(
       { sub: user.id, role: user.role },
@@ -48,6 +41,6 @@ export const authentication = async (
         token,
       })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({ error, reply, code: 400, file: 'controller authetication' })
   }
 }

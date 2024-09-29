@@ -8,8 +8,8 @@ export const listCsv = async (_: FastifyRequest, reply: FastifyReply) => {
   const csvFiles = await listCsvUseCase.execute()
 
   try {
-    return reply.status(201).send(csvFiles)
+    return reply.status(200).send(csvFiles)
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({ error, reply, code: 400, file: 'controller: listCsv' })
   }
 }
