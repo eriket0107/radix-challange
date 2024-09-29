@@ -23,7 +23,7 @@ export class FileHandler {
 
     const csvId = randomUUID()
 
-    const csvPath = path.join('src/uploads', `${uniqueName}.csv`)
+    const csvPath = path.join('./uploads', `${uniqueName}.csv`)
 
     const dirPath = path.dirname(csvPath)
     await fs.mkdir(dirPath, { recursive: true })
