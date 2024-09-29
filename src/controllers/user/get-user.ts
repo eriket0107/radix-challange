@@ -18,6 +18,11 @@ export const getUser = async (request: FastifyRequest, reply: FastifyReply) => {
 
     return reply.status(200).send({ ...user, password: undefined })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      file: 'controller: get user',
+    })
   }
 }

@@ -20,6 +20,11 @@ export const fixSensorData = async (
     const sensorsToUpdate = await fixSensorDataUserCase.execute({ filePath })
     return reply.status(201).send({ sensorsToUpdate })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      file: 'controller fix sensor data',
+    })
   }
 }

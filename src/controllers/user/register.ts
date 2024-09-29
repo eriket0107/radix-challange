@@ -20,6 +20,11 @@ export const register = async (
     const user = await registerUserUseCase.execute({ name, email, password })
     return reply.status(201).send({ ...user, password: undefined })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      file: 'controller: user register',
+    })
   }
 }

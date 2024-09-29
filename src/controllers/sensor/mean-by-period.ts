@@ -14,6 +14,11 @@ export const meanByPeriod = async (
 
     return reply.status(200).send(meanByPeriod)
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      file: 'controller: mean by period',
+    })
   }
 }

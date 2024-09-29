@@ -12,6 +12,12 @@ export const logout = async (request: FastifyRequest, reply: FastifyReply) => {
       .send({ message: 'Logged out successfully.' })
       .redirect('/')
   } catch (error) {
-    errorHandler({ error, reply, code: 400, redirectTo: '/' })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      redirectTo: '/',
+      file: 'controller: logout',
+    })
   }
 }

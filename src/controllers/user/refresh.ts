@@ -9,7 +9,13 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
       onlyCookie: true,
     })
   } catch (error) {
-    return errorHandler({ error, reply, code: 401, redirectTo: '/login' })
+    return errorHandler({
+      error,
+      reply,
+      code: 401,
+      redirectTo: '/login',
+      file: 'controller: verify jwt',
+    })
   }
 
   const requestValidationSchema = z.object({
@@ -50,6 +56,12 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
         token,
       })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+
+      file: 'controller: refresh',
+    })
   }
 }

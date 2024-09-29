@@ -6,18 +6,21 @@ export const errorHandler = ({
   code = 400,
   message,
   redirectTo,
+  file,
 }: {
   error: unknown
   reply: FastifyReply
   code?: number
   message?: string
   redirectTo?: string
+  file: string
 }) => {
   let errorMessage
 
   if (error instanceof Error) {
     errorMessage = message || error.message
     console.log('[ERROR] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', {
+      file,
       error: errorMessage,
     })
 

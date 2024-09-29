@@ -29,6 +29,11 @@ export const register = async (
 
     return reply.status(201).send({ message: 'ok' })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({
+      error,
+      reply,
+      code: 400,
+      file: 'controller: sensor register',
+    })
   }
 }

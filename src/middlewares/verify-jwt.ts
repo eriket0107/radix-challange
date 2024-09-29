@@ -7,8 +7,15 @@ export const verifyJwt = async (
   reply: FastifyReply,
 ) => {
   try {
+    console.log('teste', request)
     await request.jwtVerify()
   } catch (err) {
-    return errorHandler({ error: err, reply, code: 401, redirectTo: '/' })
+    return errorHandler({
+      error: err,
+      reply,
+      code: 401,
+      redirectTo: '/',
+      file: 'middleware: verify jwt',
+    })
   }
 }
