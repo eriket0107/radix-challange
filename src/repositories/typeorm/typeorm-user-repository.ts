@@ -7,8 +7,16 @@ import { UserRepository } from '../user-repository'
 export class TypeOrmUserRepository implements UserRepository {
   private repository: Repository<User> = dataSource.getRepository(User)
 
-  register(name: string, email: string, password: string): Promise<User> {
-    const user = this.repository.save({
+  async register({
+    email,
+    name,
+    password,
+  }: {
+    name: string
+    email: string
+    password: string
+  }): Promise<User> {
+    const user = await this.repository.save({
       name,
       email,
       password,

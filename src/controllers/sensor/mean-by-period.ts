@@ -12,7 +12,7 @@ export const meanByPeriod = async (
   try {
     const meanByPeriod = await getMeanByPeriodUseCase.execute()
 
-    return reply.status(200).send({ meanByPeriod })
+    return reply.status(200).send(meanByPeriod)
   } catch (error) {
     errorHandler({ error, reply, code: 400 })
   }

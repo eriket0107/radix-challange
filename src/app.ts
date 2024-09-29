@@ -25,8 +25,6 @@ app.register(fastifyJwt, {
   },
 })
 
-routes()
-
 app.register(multipart, {
   limits: {
     fieldNameSize: 100,
@@ -38,6 +36,8 @@ app.register(multipart, {
   },
   attachFieldsToBody: true,
 })
+
+routes()
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
