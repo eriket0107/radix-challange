@@ -1,4 +1,33 @@
+
 # API Documentation
+
+## Running the API
+
+### 1. Npm install
+
+```
+  npm i
+```
+
+### 2. Handle enviroment variables
+
+Make sure that have settled up all the required variables
+
+```
+  cp .env.example .env
+```
+
+### 3. Run DB migrations for create tables
+
+```
+  npm run migration:run
+```
+
+### 4. Finally run the application in development enviroment
+
+```
+  npm run dev
+```
 
 ## Postman Workspace with Collections Requests
 
