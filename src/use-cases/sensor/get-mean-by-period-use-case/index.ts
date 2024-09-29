@@ -26,12 +26,11 @@ type GetMeanByPeriodResponse = {
 
 type PeriodsToCompare = 'oneDay' | 'twoDays' | 'sevenDays' | 'thirtyDays'
 
-const meanByPeriod: GetMeanByPeriodResponse[] = []
-
 export class GetMeanByPeriodUseCase {
   constructor(private sensorRepository: SensorRepository) {}
 
   async execute(): Promise<GetMeanByPeriodResponse[]> {
+    const meanByPeriod: GetMeanByPeriodResponse[] = []
     const days = Object.keys(periodsToCompare).filter((key) => key !== 'today')
 
     for (const day of days as PeriodsToCompare[]) {
