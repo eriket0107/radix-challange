@@ -39,6 +39,6 @@ export const inputCsv = async (
       id: csvFile?.csvId,
     })
   } catch (error) {
-    errorHandler({ error, reply, code: 400 })
+    errorHandler({ error, reply, code: 400, file: 'controller: inputCsv' })
   }
 }

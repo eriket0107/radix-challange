@@ -26,20 +26,13 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
   const { sub, role } = requestValidationSchema.parse(request.user)
 
   try {
-    const token = await reply.jwtSign(
-      { sub, role },
-      {
-        sign: {
-          expiresIn: '10m',
-        },
-      },
-    )
+    const token = await reply.jwtSign({ sub, role }, {})
 
     const refreshToken = await reply.jwtSign(
       { sub, role },
       {
         sign: {
-          expiresIn: '1d',
+          expiresIn: '30s',
         },
       },
     )

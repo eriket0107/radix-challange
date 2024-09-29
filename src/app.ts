@@ -12,16 +12,19 @@ import { routes } from './routes'
 
 export const app = fastify()
 
-app.register(cors)
+app.register(cors, {
+  credentials: true,
+  origin: true,
+})
 app.register(cookies)
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
-  sign: {
-    expiresIn: '10m',
-  },
   cookie: {
     cookieName: 'refreshToken',
     signed: false,
+  },
+  sign: {
+    expiresIn: '10m',
   },
 })
 

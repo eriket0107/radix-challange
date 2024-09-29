@@ -66,8 +66,8 @@ export class TyperOrmSensorRepository implements SensorRepository {
       .where({
         timestamp: '',
       })
-      .orWhere({ value: 0 })
-      .orWhere({ equipmentId: '' })
+      .orWhere({ value: 0 || null })
+      .orWhere({ equipmentId: null })
       .getMany()
 
     return sensorsToUpdate
