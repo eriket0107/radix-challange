@@ -10,7 +10,6 @@ export const getUser = async (request: FastifyRequest, reply: FastifyReply) => {
       sub: z.string(),
     })
     const { sub } = getRequestUserSubBodySchema.parse(request.user)
-    console.log({ sub })
 
     const getUserByIdUseCase = makeGetUserById()
 

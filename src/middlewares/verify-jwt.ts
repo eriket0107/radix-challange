@@ -7,7 +7,6 @@ export const verifyJwt = async (
   reply: FastifyReply,
 ) => {
   try {
-    console.log('teste', request)
     await request.jwtVerify()
   } catch (err) {
     return errorHandler({

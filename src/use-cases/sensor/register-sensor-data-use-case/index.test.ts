@@ -18,7 +18,6 @@ describe('Register Sensor data Use Case', async () => {
   it('should be able to create a new Sensor Data', async () => {
     const { sensorData } = await sut.execute(sensorDataMock())
 
-    console.log(sensorData)
     expect(sensorData).toEqual(expect.any(Object))
     expect(sensorData.equipmentId).toEqual(expect.any(String))
     expect(sensorData.value).toEqual(expect.any(Number))

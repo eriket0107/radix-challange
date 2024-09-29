@@ -14,7 +14,6 @@ export class FixSensorDataUseCase {
   async execute({ filePath }: { filePath: string }) {
     if (!filePath) throw new EmptyFilePathError()
     const emptyRegisters = await this.sensorRepository.findEmptyRegisters()
-    console.log(emptyRegisters)
     const filedHandler = new FileHandler()
 
     const csvFile = (await filedHandler.parseFile({
@@ -30,7 +29,6 @@ export class FixSensorDataUseCase {
         }
       }
 
-      console.log(sensorDataToSave)
       if (!sensorDataToSave) throw new FixDataError()
 
       fixedSensorData = await this.sensorRepository.update({

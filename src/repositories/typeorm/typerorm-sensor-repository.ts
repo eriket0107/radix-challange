@@ -54,9 +54,8 @@ export class TyperOrmSensorRepository implements SensorRepository {
 
     if (!dataToUpdate) throw new Error('Error when updating data')
 
-    console.log('antes', dataToUpdate)
     Object.assign(dataToUpdate, sensorDataToSave)
-    console.log('depois', dataToUpdate)
+
     return this.repository.save(dataToUpdate)
   }
 
